@@ -10,6 +10,6 @@
 
 #include <stm32f429xx.h>
 
-void tim2_everysecond_init(void);
+void tim4_output_compare(void); // when reading the alternate function mapping on the datasheet we observe that TIM4_CH2 is connected to PB7 where the user LED connects
 
 #endif /* TIMER_H_ */
