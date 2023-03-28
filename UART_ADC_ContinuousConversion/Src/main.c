@@ -23,8 +23,6 @@ int main(void)
 
 	for(;;)
 	{
-		start_conversion();
-
 		sensor_val = adc_read();
 		printf("Sensor value: %d \n\r", (int) sensor_val);
 	}
