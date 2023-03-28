@@ -1,4 +1,4 @@
-# Embedded System Bare-Metal Programming for STM32_MCU
+# Embedded System Bare-Metal Programming for STM32F4xx_MCU
 
 * The most of the source code examples are applicable to  he STM Nucleo F429ZI. 
 * Others apply to the STM32F429I_DISCOVERY1 board. Normally I have specified the target board in the header files. 
