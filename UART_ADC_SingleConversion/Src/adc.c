@@ -15,7 +15,6 @@
 #define CR2_ADON (1UL<<0)
 #define CR2_SWSTART (1UL<<30)
 #define SR_EOC (1UL<<1)
-#define CR2_CONT (1UL<<1)
 
 void pa1_adc_init(void)
 {
@@ -40,15 +39,12 @@ void pa1_adc_init(void)
 	/* parameter: Conversion sequence length */
 	ADC1->SQR1 = ADC_SQR1_LEN;
 
-
 	/* Enable ADC module */
 	ADC1->CR2 |= CR2_ADON;
 }
 
 void start_conversion(void)
 {
-
-
 	/* Start ADC Conversion */
 	ADC1->CR2 |= CR2_SWSTART;
 }

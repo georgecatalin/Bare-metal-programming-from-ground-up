@@ -15,6 +15,7 @@
 #define CR2_ADON (1UL<<0)
 #define CR2_SWSTART (1UL<<30)
 #define SR_EOC (1UL<<1)
+#define CR2_CONT (1UL<<1)
 
 void pa1_adc_init(void)
 {
@@ -46,6 +47,9 @@ void pa1_adc_init(void)
 
 void start_conversion(void)
 {
+	/* Enable continuous conversion */
+	ADC1->CR2 |= CR2_CONT;
+	
 	/* Start ADC Conversion */
 	ADC1->CR2 |= CR2_SWSTART;
 }
