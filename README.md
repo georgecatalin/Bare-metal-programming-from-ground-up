@@ -10,3 +10,14 @@ In most of the cases, I have specified the target board in the heading of source
 
 ### STM32F429I_DISCOVERY1 board 
 ![STM32F429I_DISCOVERY1 Discovery Board](STM32F429I_DISCOVERY1.jpg)
+
+## Summary
+Course work associated with the Udemy.com course "Embedded Systems Bare-Metal Programming Ground Up™ (STM32)" , authored by Israel Gbati.
+
+https://www.udemy.com/course/embedded-systems-bare-metal-programming/
+
+
+### Commits by
+* George Calin 
+* george.calin [at] gmail.com
+* Connect me on LinkedIn: https://www.linkedin.com/in/cgeorge1978/
