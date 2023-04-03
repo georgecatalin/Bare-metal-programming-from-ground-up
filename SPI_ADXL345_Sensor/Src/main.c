@@ -11,67 +11,34 @@
  */
 
 #include <stdio.h>
-#include "uart.h"
-#include "timer.h"
+#include "adxl345.h"
+#include <stdint.h>
 
-#define GPIOB_ENABLE (1UL<<1)
-#define PIN7	(1UL<<7)
-#define LED_PIN	PIN7
+int16_t x,y,z;
+double xg, yg, zg;
 
-#define DMA_LISR__TCIF3 (1UL<<27)
-#define DMA_LIFCR__CTCIF3 (1UL<<27)
-
-static void dma1_callback();
+uint8_t data_rec[6];
 
 int main(void)
 {
-	char message[50] = "Good day, Alligator from DMA UART TX\n\r";
 
-	/* Enable the clock access via AHB1 to GPIO B */
-	RCC->AHB1ENR|=GPIOB_ENABLE;
 
-	/* Set the mode in the MODER registry to output for port B7 */
-	GPIOB->MODER &=~(1UL<<15); //'0'
-	GPIOB->MODER |=(1UL<<14); //'1'
+	adxl_init();
 
-	uart3_tx_init();
-	dma1_stream3_init((uint32_t) message, (uint32_t) &USART3->DR, 50);
 
-	for(;;)
+	while(1)
 	{
+		adxl_read(DATA_START_ADDR,data_rec);
 
+		 x = ((data_rec[1]<<8)|data_rec[0]);
+		 y = ((data_rec[3]<<8)|data_rec[2]);
+		 z = ((data_rec[5]<<8)|data_rec[4]);
+
+		xg = (x * 0.0078);
+		yg = (y * 0.0078);
+		zg = (z * 0.0078);
 
 	}
 
 }
 
-static void dma1_callback()
-{
-	/* Light the user LED */
-	GPIOB->ODR |=LED_PIN;
-}
-
-void DMA1_Stream3_IRQHandler(void)
-{
-	/* Check for transfer complete interrupt for Stream 3 */
-	/* ***********************************************************************************************************************************************
-	 * Explanation: This info is taken from RM0090: DMA low interrupt status register (DMA_LISR) (because we refer to channel 3)
-	 * We are going to be interested in bit no.27 TCIFx: Stream x transfer complete interrupt flag (x = 3..0)
-	 * 	This bit is set by hardware. It is cleared by software writing 1 to the corresponding bit in the DMA_LIFCR register.
-	 * 	0: No transfer complete event on stream x
-	 * 	1: A transfer complete event occurred on stream x
-	 * 	********************************************************************************************************************************************* */
-	 if(DMA1->LISR & DMA_LISR__TCIF3)
-	 {
-		 /* Clear the flag */
-		 /* *******************************************************************************************************************************************
-		  * Explanation: This info is taken from RM0090: DMA low interrupt flag clear register (DMA_LIFCR) as it said above when in need to clear the flag
-		  * We are going to be interested in bit no.27 which refers to CTCIFx: Stream x clear transfer complete interrupt flag (x = 3..0)
-		  * 	Writing 1 to this bit clears the corresponding TCIFx flag in the DMA_LISR register
-		  * ***************************************************************************************************************************************** */
-		 DMA1->LIFCR |= DMA_LIFCR__CTCIF3;
-
-		 /* Do something */
-		 dma1_callback();
-	 }
-}
