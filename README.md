@@ -7,6 +7,8 @@ Source code adapted after the Udemy.com course  "Embedded Systems Bare-Metal Pro
 https://www.udemy.com/course/embedded-systems-bare-metal-programming/
 
 The source code is tested on STM32 Nucleo 144 family boards.
+* https://www.st.com/en/evaluation-tools/nucleo-f429zi.html
+* https://www.st.com/en/evaluation-tools/32f429idiscovery.html
 
 ### STM32 Nucleo F429ZI
 ![STM32 Nucleo 144 Development Board](STM32_Nucleo_144.jpg)
