@@ -2,9 +2,8 @@
 Bare-metal programming for the SMT32 Microcontrollers. No libraries used, only manipulation of the registries.
 
 ## Summary
-Source code adapted after the Udemy.com course  "Embedded Systems Bare-Metal Programming Ground Up™ (STM32)" , authored by Israel Gbati.
-
-https://www.udemy.com/course/embedded-systems-bare-metal-programming/
+The content within this repository is my own work produced as a result of completing the course  "Embedded Systems Bare-Metal Programming Ground Up™ (STM32)" , authored by Israel Gbati.
+* https://www.udemy.com/course/embedded-systems-bare-metal-programming/
 
 The source code is tested on STM32 Nucleo 144 family boards.
 * https://www.st.com/en/evaluation-tools/nucleo-f429zi.html
@@ -28,7 +27,7 @@ Bare-metal drivers included:
 * SysTick
 * Interrupts 
 
-### Commits by
-* George Calin 
+### About me
+* George Calin
 * george.calin [at] gmail.com
-* Connect me on LinkedIn: https://www.linkedin.com/in/cgeorge1978/
+* LinkedIn: https://www.linkedin.com/in/cgeorge1978/
